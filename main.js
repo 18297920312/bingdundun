@@ -271,7 +271,8 @@ function play(speed) {
         window.scrollTo(0,99999);
         n++;
         if(n > string.length - 1){
-            window.clearInterval(id);
+            stop();
+            n = string.length - 1
         }
         else if(string[n] === '\n'){
             text += '<br>'; 
@@ -282,28 +283,32 @@ function play(speed) {
     }, speed);
     return statue;
 }
-
+function stop(){
+    for (let i = 0;i <= id;i++){
+        window.clearInterval(i);
+    }
+}
 let id = play(time);
 
 b1.onclick = () => {
-    window.clearInterval(id);
+    stop();
     time = 100;
     id = play(100);
 }
 b2.onclick = () => {
-    window.clearInterval(id);
+    stop();
     time = 50;
     id = play(50);
 }
 b3.onclick = () => {
-    window.clearInterval(id);
+    stop();
     time = 5
     id = play(5);
 }
 b4.onclick = () => {
-    console.log('dianji');
-    window.clearInterval(id);
+    stop();
+    console.log(id);
 }
 b5.onclick = () => {
-   id = play(time);
+    id = play(time);  
 }

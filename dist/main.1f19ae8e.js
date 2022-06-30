@@ -132,7 +132,8 @@ function play(speed) {
     n++;
 
     if (n > string.length - 1) {
-      window.clearInterval(id);
+      stop();
+      n = string.length - 1;
     } else if (string[n] === '\n') {
       text += '<br>';
     } else if (string[n] === ' ') {
@@ -142,29 +143,35 @@ function play(speed) {
   return statue;
 }
 
+function stop() {
+  for (var i = 0; i <= id; i++) {
+    window.clearInterval(i);
+  }
+}
+
 var id = play(time);
 
 b1.onclick = function () {
-  window.clearInterval(id);
+  stop();
   time = 100;
   id = play(100);
 };
 
 b2.onclick = function () {
-  window.clearInterval(id);
+  stop();
   time = 50;
   id = play(50);
 };
 
 b3.onclick = function () {
-  window.clearInterval(id);
+  stop();
   time = 5;
   id = play(5);
 };
 
 b4.onclick = function () {
-  console.log('dianji');
-  window.clearInterval(id);
+  stop();
+  console.log(id);
 };
 
 b5.onclick = function () {
@@ -198,7 +205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64257" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56068" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
